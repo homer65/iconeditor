@@ -1,0 +1,43 @@
+========================> Version 0.12 / 18.10.2010 <===========================
+(1) Neue Operation FillPolygon
+========================> Version 0.15 / 27.07.2012 <===========================
+(1) Neue Operation FillBoxWithImage
+(2) Neuer IconPanel Scalable IconPanel
+    zeigt auch groessere Images an
+========================> Version 0.16 / 28.07.2012 <===========================
+(1) Neue Icons fuer die Toolbar
+(2) License Information
+========================> Version 0.17 / 28.07.2012 <===========================
+(1) Bugfixes
+========================> Version 0.18 / 28.07.2012 <===========================
+(1) NonQuadraticIconPanel ersetzt ScalableIconPanel
+========================> Version 0.19 / 28.07.2012 <===========================
+(1) Neue Operation InsertImage
+========================> Version 0.20 / 29.07.2012 <===========================
+(1) Neue Operation Lupe
+========================> Version 0.21 / 31.07.2012 <===========================
+(1) Neue Operation InsertText
+========================> Version 0.22 / 01.08.2012 <===========================
+(1) Von JDialog auf JFrame umgestellt
+========================> Version 0.23 / 02.08.2012 <===========================
+(1) Unterordner license mit Text der GPL Version 2 und 3
+(2) readme.html überarbeitet
+(3) start.bat überarbeitet
+(4) start.sh überarbeitet
+(5) ParameterDialog in Settings umbenannt
+(6) PixelPanel und abhängigeentfernt
+========================> Version 0.24 / 12.10.2018 <===========================
+(1) Einbau von Filtern
+========================> Version 0.25 / 15.10.2018 <===========================
+(1) Einbau weiterer Filter
+========================> Version 0.26 / 15.10.2018 <===========================
+(1) Einbau weiterer Filter
+========================> Version 0.27 / 16.10.2018 <===========================
+(1) DFT Filter erstmalig implementiert
+========================> Version 0.28 / 19.10.2018 <===========================
+(1) Einsatz der Apache Commons Math Bibliothek 
+========================> Version 0.29 / 21.10.2018 <===========================
+(1) Anpassung der Start Skripte
+(2) Neuer FFT Filter
+========================> Version 0.30 / 22.10.2018 <===========================
+(1) Anpassung FFT Filter

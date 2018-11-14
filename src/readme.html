@@ -1,0 +1,100 @@
+<html>
+<body>
+<p>
+Der IconEditor ist eine in der Programmiersprache Java geschriebene Software.
+Mit ihr soll es m&ouml;glich sein Icon's und Bilder zu bearbeiten.
+Derzeit werden die Typen png,gif,jpg,jpeg und ico unterst&uuml;tzt. 
+F&uuml;r den ico Typ benutzen wir eine Bibliothek von
+<a href="http://image4j.sourceforge.net">http://image4j.sourceforge.net</a>.
+</p>
+<p>
+Der IconEditor kann per Java Webstart von der Seite <a href="http://www.myoggradio.org">myoggradio.org</a>
+aus dem Download Bereich aufgerufen werden.
+</p>
+<p>
+Die Software kann gem&auml;&szlig; den Bestimmungen der GPL in der Version 2 oder 3
+genutzt werden. Siehe Unterordner license.
+</p>
+<p>
+Der Quellcode liegt in Form eines Eclipse Projekt bei.
+</p>
+<p>
+Die Funktionen um ein Icon zu bearbeiten nennen wir Operation.
+Der IconEditor hatt eine Undo Funktionalit&auml;t, mit der es m&ouml;glich ist eine 
+Operation r&uuml;ckg&auml;ngig zu machen. Eine Gr&ouml;&szlig;en&auml;nderung - resize -
+des Icons kann nicht r&uuml;ckg&auml;ngig gemacht werden. Im Gegensatz zu einer Operation
+kann ein Util nicht r&uuml;ckg&auml;ngig gemacht werden.
+Um eine Operation auszuf&uuml;hren braucht diese als Input eine oder mehrere Farben 
+und ein oder mehrere Pixel. Eine Farbe w&auml;hlt man durch Klicken auf den Farbauswahlpanel (links oberhalb des Icons).
+Ein Pixel wird einfach durch clicken auf das Icon ausgew&auml;hlt.
+</p>
+<p>
+Derzeit gibt es folgende Operation:<br>
+(1) SetPixel - Ben&ouml;tigt eine Farbe und ein Pixel<br>
+&Auml;ndert die Farbe eines Pixel<br>
+(2) FillBox - Ben&ouml;tigt eine Farbe und zwei Pixel<br>
+F&uuml;llt einen rechteckigen Bereich mit einer Farbe<br>
+(3) EraseBox - Ben&ouml;tigt zwei Pixel<br>
+L&ouml;scht einen rechteckigen Bereich<br>
+(4) FillCircle - Ben&ouml;tigt eine Farbe und zwei Pixel<br>
+F&uuml;llt einen Kreis mit einer Farbe<br>
+Allerdings sehen Kreise erst bei hoher Aufl&ouml;sung gut aus<br>
+(5) FillEllipse - Ben&ouml;tigt eine Farbe und drei Pixel<br>
+F&uuml;llt eine Ellispe mit Farbe<br>
+Die ersten beiden Pixel sind die Brennpunkte der Ellipse<br>
+Das dritte Pixel ist ein Punkt auf dem Rand der Ellipse<br>
+Damit kann man auch eine Linie zeichnen, indem man den Rand 
+auf die Verbindungslinie der Brennpunkte setzt<br>
+(6) ChangeColor - Ben&ouml;tigt eine Farbe und ein Pixel<br>
+&Auml;ndert die Farbe aller Pixel, die die gleiche Farbe wie das ausgew&auml;hlte Pixel haben<br>
+(7) ClipBox - Ben&ouml;tigt zwei Pixel<br>
+Schneidet aus dem Icon einen rechteckigen Bereich aus, der zum neuen Icon wird<br>
+(8) Rotate<br>
+Dreht das Icon um 90 Grad gegen den Uhrzeigersinn<br>
+(9) ShiftIcon - Ben&ouml;tigt ein Pixel<br>
+Die Pixel des Icon sind durchnummeriert. Oben links ist das Pixel 0,0.<br>
+W&auml;hlt man das Pixel n,m aus, so wird das Icon um n Pixel nach links und m Pixel nach oben verschoben.<br>
+Dabei werden Pixel die nach oben bzw links herausfallen unten bzw rechts wieder angeh&auml;ngt.<br>
+(10) DrawLine - Ben&ouml;tigt eine Farbe und zwei Pixel<br>
+Zeichnet eine Linie vom ersten zum zweiten Pixel<br>
+(11) SwitchColor - Ben&ouml;tigt zwei Pixel<br>
+Alle Pixel, die die Farbe des ersten Pixel haben bekommen die Farbe des zweiten Pixel.<br>
+Alle Pixel, die die Farbe des zweiten Pixel haben bekommen die Farbe des ersten Pixel.<br>
+(12) FillPolygon - Ben&ouml;tigt drei oder mehr Pixel und eine Farbe<br>
+Aus den n (n>2) Pixeln wird ein geschlossenes Polygon gezeichnet, dessen Inneres<br>
+mit einer Farbe gef&uuml;llt wird. Die Farbe wird erst akzeptiert, wenn mindestens<br>
+drei Pixel vorhanden sind. Die Farbe schlie&szlig;t die Operation ab.<br>
+(13) FillBoxWithImage - Ben&ouml;tigt zwei Pixel und ein Image<br>
+Das Image wird ins Icon an die durch zwei Pixel markierte Stelle eingef&uuml;gt.<br>
+Dabei wird das Image auf die passende GR&ouml;&szlig;e skaliert.<br>
+(14) Heller - Wirkt sofort<br>
+Macht das Bild etwas heller<br>
+(15) Dunkler - Wirkt sofort<br>
+Macht das Bild etwas dunkler<br>
+(16) Insert Image - Ben&ouml;tigt ein Pixel<br>
+F&uuml;gt das Image an die markierte Stelle in seiner Originalgr&ouml;&szlig;e ein.<br>
+(17) Insert Text - Ben&ouml;tigt ein Pixel und eine Farbe<br>
+Es wird ein Dialog aufgerufen, in dem man einen Text und eine Textgr&ouml;&szlig;e angeben kann.<br>
+Dannach wird der Text an die markierte Stelle eingef&uuml;gt<br>
+</p>
+<p>
+Derzeit gibt es folgende Util:<br>
+(1) Resize<br>
+&Auml;ndert die Gr&ouml;&szlig;e des Icon<br>
+(2) PickColor<br>
+Setzt die aktive Farbe auf die Farbe des Pixel auf das als n&auml;chstes geklickt wird<br>
+(3) SetColor<br>
+Setzt die aktive Farbe &uuml;ber einen Farbauswahldialog<br>
+(4) Preview<br>
+Zeigt eine Vorschau des Bildes in Originalgr&ouml;&szlig;e.<br>
+Vorsicht: Sehr gro&szlig;e Bilder passen nicht auf den Bildschirm.<br>
+</p>
+<p>
+Im Ordner "samples" sind Beispiele f&uuml;r Bilder von <a href="http://www.openclipart.org">www.openclipart.org</a>,
+die wir bearbeitet haben. Au&szlig;erdem sind einige Eigenkonstruktionen dabei.
+</p>
+<p>
+Es gibt change-log.txt. Dort sind die Neuerungen eingetragen.
+</p>
+</body>
+</html>
