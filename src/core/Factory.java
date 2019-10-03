@@ -60,4 +60,8 @@ public class Factory
 	{
 		return new SimpleStatusPanel();
 	}
+	public static BufferedImageConverter getBufferedImageConverter()
+	{
+		return new SimpleBufferedImageConverter();
+	}
 }

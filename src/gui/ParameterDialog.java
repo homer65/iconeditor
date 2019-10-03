@@ -39,6 +39,9 @@ public class ParameterDialog extends JDialog implements ActionListener
 	private JLabel lab11 = new JLabel("Rmin");
 	private JTextField tf11 = new JTextField(20);
 	private JButton butt11 = new JButton("Default");	
+	private JLabel lab12 = new JLabel("Transparency");
+	private JTextField tf12 = new JTextField(20);
+	private JButton butt12 = new JButton("Default");	
 	private JPanel bpan = new JPanel();
 	private JPanel bpanx = new JPanel();
 	private JButton buttb1 = new JButton("save");
@@ -57,7 +60,8 @@ public class ParameterDialog extends JDialog implements ActionListener
 		tf9.setText("" + Parameter.bias);
 		tf10.setText("" + Parameter.rmax);
 		tf11.setText("" + Parameter.rmin);
-		apan.setLayout(new GridLayout(11,3));
+		tf12.setText("" + Parameter.transparency);
+		apan.setLayout(new GridLayout(12,3));
 		apan.add(lab1);
 		apan.add(tf1);
 		apan.add(butt1);
@@ -88,6 +92,9 @@ public class ParameterDialog extends JDialog implements ActionListener
 		apan.add(lab11);
 		apan.add(tf11);
 		apan.add(butt11);
+		apan.add(lab12);
+		apan.add(tf12);
+		apan.add(butt12);
 		bpan.setLayout(new GridLayout(1,2));
 		bpan.add(buttb1);
 		bpan.add(buttb2);
@@ -109,6 +116,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 		butt9.addActionListener(this);
 		butt10.addActionListener(this);
 		butt11.addActionListener(this);
+		butt12.addActionListener(this);
 		this.pack();
 	}
 	public void actionPerformed(ActionEvent ae)
@@ -154,6 +162,10 @@ public class ParameterDialog extends JDialog implements ActionListener
 		{
 			tf11.setText("" + Parameter.rminDefault);
 		}
+		if (quelle == butt12)
+		{
+			tf12.setText("" + Parameter.transparencyDefault);
+		}
 		if (quelle == buttb1)
 		{
 			String s1 = tf1.getText();
@@ -166,6 +178,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 			String s9 = tf9.getText();
 			String s10 = tf10.getText();
 			String s11 = tf11.getText();
+			String s12 = tf12.getText();
 			Parameter.minIconWidth = getNumber(s1);
 			Parameter.maxIconWidth = getNumber(s2);
 			Parameter.minIconHeight = getNumber(s3);
@@ -176,6 +189,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 			Parameter.bias = getDouble(s9);
 			Parameter.rmax = getDouble(s10);
 			Parameter.rmin = getDouble(s11);
+			Parameter.transparency = getNumber(s12);
 			tf1.setText(Parameter.minIconWidth + "");
 			tf2.setText(Parameter.maxIconWidth + "");
 			tf3.setText(Parameter.minIconHeight + "");
@@ -186,6 +200,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 			tf9.setText(Parameter.bias + "");
 			tf10.setText(Parameter.rmax + "");
 			tf11.setText(Parameter.rmin + "");
+			tf12.setText(Parameter.transparency + "");
 			prefs.put("iconeditor_miniconwidth",Parameter.minIconWidth + "");
 			prefs.put("iconeditor_maxiconwidth",Parameter.maxIconWidth + "");
 			prefs.put("iconeditor_miniconheight",Parameter.minIconHeight + "");
@@ -196,6 +211,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 			prefs.put("iconeditor_bias",Parameter.bias + "");
 			prefs.put("iconeditor_rmax",Parameter.rmax + "");
 			prefs.put("iconeditor_rmin",Parameter.rmin + "");
+			prefs.put("iconeditor_transparency",Parameter.transparency + "");
 		}
 		if (quelle == buttb2)
 		{
@@ -207,7 +223,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 		int erg = 0;
 		try
 		{
-			erg = new Integer(s).intValue();
+			erg = Integer.parseInt(s);
 		}
 		catch (Exception e)
 		{
@@ -221,7 +237,7 @@ public class ParameterDialog extends JDialog implements ActionListener
 		double erg = 0;
 		try
 		{
-			erg = new Double(s).doubleValue();
+			erg = Double.parseDouble(s);
 		}
 		catch (Exception e)
 		{

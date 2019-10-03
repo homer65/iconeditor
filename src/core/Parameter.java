@@ -1,7 +1,7 @@
 package core;
 public class Parameter 
 {
-	public static String version = "Version 0.30 - 22.10.2018 - www.myoggradio.org";
+	public static String version = "Version 0.31 - 03.10.2019";
 	public static String license = "GPL Version 2 and 3";
 	public static String iniDatei = "IconEditor.ini";
 	public static int iconWidth = 16;
@@ -10,18 +10,20 @@ public class Parameter
 	public static int iconPanelSize = 640;
 	public static int minIconWidth = 16;
 	public static int minIconHeight = 16;
-	public static int maxIconHeight = 256;
-	public static int maxIconWidth = 256;
+	public static int maxIconHeight = 4096;
+	public static int maxIconWidth = 4096;
 	public static int colorDistance = 76;
 	public static int iconWidthDefault = 16;
 	public static int iconHeightDefault = 16;
+	public static int transparency = 0;
 	// public static int pixelPanelSizeDefault = 8;
 	public static int iconPanelSizeDefault = 640;
 	public static int minIconWidthDefault = 16;
 	public static int minIconHeightDefault = 16;
-	public static int maxIconHeightDefault = 256;
-	public static int maxIconWidthDefault = 256;
+	public static int maxIconHeightDefault = 4096;
+	public static int maxIconWidthDefault = 4096;
 	public static int colorDistanceDefault = 76;
+	public static int transparencyDefault = 0;
 	public static String text = "";
 	public static String textsize = "20";
 	public static double gain = 1.05;

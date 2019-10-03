@@ -51,6 +51,7 @@ public class IconEditor extends Menu implements PixelListener,ColorListener
 	private JMenuItem m216 = new JMenuItem("InsertImage");
 	private JMenuItem m217 = new JMenuItem("Lupe");
 	private JMenuItem m218 = new JMenuItem("InsertText");
+	private JMenuItem m219 = new JMenuItem("MakeTransparent");
 	private JMenuItem m31 = new JMenuItem("Undo");
 	private JMenuItem m32 = new JMenuItem("Redo");
 	private JMenuItem m41 = new JMenuItem("Version...");
@@ -123,6 +124,7 @@ public class IconEditor extends Menu implements PixelListener,ColorListener
 		m216.addActionListener(this);
 		m217.addActionListener(this);
 		m218.addActionListener(this);
+		m219.addActionListener(this);
 		m31.addActionListener(this);
 		m32.addActionListener(this);
 		m41.addActionListener(this);
@@ -165,6 +167,7 @@ public class IconEditor extends Menu implements PixelListener,ColorListener
 		m2.add(m216);
 		m2.add(m217);
 		m2.add(m218);
+		m2.add(m219);
 		m3.add(m31);
 		m3.add(m32);
 		m4.add(m41);
@@ -580,7 +583,10 @@ public class IconEditor extends Menu implements PixelListener,ColorListener
 			aktiveOperation = new InsertText();
 			aktiveOperation.pushColor(aktiveColor);
 		}
-
+		if (quelle == m219)
+		{
+			aktiveOperation = new MakeTransparent();
+		}
 		if (quelle == m31)
 		{
 			Icon ticon = undo.undo();

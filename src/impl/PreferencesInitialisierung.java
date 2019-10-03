@@ -12,52 +12,57 @@ public class PreferencesInitialisierung implements Initialisierung
 			String s = prefs.get("iconeditor_miniconwidth",null);
 			if (s != null)
 			{
-				Parameter.minIconWidth = new Integer(s).intValue();
+				Parameter.minIconWidth = Integer.parseInt(s);
 			}
 			s = prefs.get("iconeditor_maxiconwidth",null);
 			if (s != null)
 			{
-				Parameter.maxIconWidth = new Integer(s).intValue();
+				Parameter.maxIconWidth = Integer.parseInt(s);
 			}
 			s = prefs.get("iconeditor_miniconheight",null);
 			if (s != null)
 			{
-				Parameter.minIconHeight = new Integer(s).intValue();
+				Parameter.minIconHeight = Integer.parseInt(s);
 			}
 			s = prefs.get("iconeditor_maxiconheight",null);
 			if (s != null)
 			{
-				 Parameter.maxIconHeight = new Integer(s).intValue();
+				 Parameter.maxIconHeight = Integer.parseInt(s);
 			}
 			s = prefs.get("iconeditor_iconpanelsize",null);
 			if (s != null)
 			{
-				Parameter.iconPanelSize = new Integer(s).intValue();
+				Parameter.iconPanelSize = Integer.parseInt(s);
 			}
 			s = prefs.get("iconeditor_colordistance",null);
 			if (s != null)
 			{
-				Parameter.colorDistance = new Integer(s).intValue();
+				Parameter.colorDistance = Integer.parseInt(s);
 			}
 			s = prefs.get("iconeditor_gain",null);
 			if (s != null)
 			{
-				Parameter.gain = new Double(s).doubleValue();
+				Parameter.gain = Double.parseDouble(s);
 			}
 			s = prefs.get("iconeditor_bias",null);
 			if (s != null)
 			{
-				Parameter.bias = new Double(s).doubleValue();
+				Parameter.bias = Double.parseDouble(s);
 			}
 			s = prefs.get("iconeditor_rmax",null);
 			if (s != null)
 			{
-				Parameter.rmax = new Double(s).doubleValue();
+				Parameter.rmax = Double.parseDouble(s);
 			}
 			s = prefs.get("iconeditor_rmin",null);
 			if (s != null)
 			{
-				Parameter.rmin = new Double(s).doubleValue();
+				Parameter.rmin = Double.parseDouble(s);
+			}
+			s = prefs.get("iconeditor_transparency",null);
+			if (s != null)
+			{
+				Parameter.transparency = Integer.parseInt(s);
 			}
 		}
 		catch (Exception e)

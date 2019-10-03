@@ -32,13 +32,13 @@ public class AdvancedIcon implements Icon
 		{
 			for (int j=0;j<height;j++)
 			{
-				pixel[i][j] = bimage.getRGB(i,j);
+				pixel[i][j] = bimage.getRGB(i,j);			
 			}
 		}
 	}
 	public BufferedImage getImage() 
 	{
-		BufferedImage erg = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+		BufferedImage erg = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		for (int i=0;i<width;i++)
 		{
 			for (int j=0;j<height;j++)
@@ -70,6 +70,8 @@ public class AdvancedIcon implements Icon
 		BufferedImage im = il.load(file,typ);
 		if (im != null)
 		{
+			BufferedImageConverter converter = Factory.getBufferedImageConverter();
+			im = converter.convert(im);
 			width = im.getWidth();
 			height = im.getHeight();
 			Protokol.write("AdvancedIcon:readFromFile:width:" + width);
