@@ -2,9 +2,17 @@ package impl;
 import net.sf.image4j.codec.ico.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.metadata.IIOMetadata;
+import javax.imageio.metadata.IIOMetadataFormat;
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.JOptionPane;
+
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 
 import core.*;
 public class SimpleImageLoader implements ImageLoader
@@ -20,6 +28,7 @@ public class SimpleImageLoader implements ImageLoader
 		{
 			try
 			{
+				Protokol.write("SimpleImageLoader:write:" + typ);
 				ImageIO.write(img,typ,file);
 			}
 			catch (Exception e)
@@ -92,6 +101,7 @@ public class SimpleImageLoader implements ImageLoader
 		try
 		{
 			erg = ImageIO.read(file);
+			readAndDisplayMetadata(file);
 		}
 		catch (Exception e)
 		{
@@ -100,4 +110,67 @@ public class SimpleImageLoader implements ImageLoader
 		}
 		return erg;
 	}
+	private void readAndDisplayMetadata(File file) 
+	{
+        try 
+        {
+            ImageInputStream iis = ImageIO.createImageInputStream(file);
+            Iterator<ImageReader> readers = ImageIO.getImageReaders(iis);
+            if (readers.hasNext()) 
+            {
+                ImageReader reader = readers.next();
+                reader.setInput(iis, true);
+                IIOMetadata metadata = reader.getImageMetadata(0);
+                String[] names = metadata.getMetadataFormatNames();
+                int length = names.length;
+                for (int i = 0; i < length; i++) 
+                {
+                    System.out.println( "Format name: " + names[ i ] );
+                    displayMetadata(metadata.getAsTree(names[i]));
+                }
+            }
+        }
+        catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+	private void indent(int level) 
+	{
+        for (int i = 0; i < level; i++) System.out.print("    ");
+    }
+	private void displayMetadata(Node node)
+	{
+		displayMetadata(node,0);
+	}
+    private void displayMetadata(Node node,int level) 
+    {
+        indent(level);
+        System.out.print("<" + node.getNodeName());
+        NamedNodeMap map = node.getAttributes();
+        if (map != null) 
+        {
+            int length = map.getLength();
+            for (int i = 0; i < length; i++)
+            {
+                Node attr = map.item(i);
+                System.out.print(" " + attr.getNodeName() +
+                                 "=\"" + attr.getNodeValue() + "\"");
+            }
+        }
+        Node child = node.getFirstChild();
+        if (child == null)
+        {
+            System.out.println("/>");
+            return;
+        }
+        System.out.println(">");
+        while (child != null) 
+        {
+            displayMetadata(child, level + 1);
+            child = child.getNextSibling();
+        }
+        indent(level);
+        System.out.println("</" + node.getNodeName() + ">");
+    }
 }

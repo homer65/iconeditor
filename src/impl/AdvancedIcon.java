@@ -38,7 +38,21 @@ public class AdvancedIcon implements Icon
 	}
 	public BufferedImage getImage() 
 	{
+		BufferedImage erg = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+		Protokol.write("AdvancedIcon:getImage: " + width + ":" + height);
+		for (int i=0;i<width;i++)
+		{
+			for (int j=0;j<height;j++)
+			{
+				erg.setRGB(i,j,pixel[i][j]);
+			}
+		}
+		return erg;
+	}
+	public BufferedImage getARGBImage() 
+	{
 		BufferedImage erg = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+		Protokol.write("AdvancedIcon:getARGBImage: " + width + ":" + height);
 		for (int i=0;i<width;i++)
 		{
 			for (int j=0;j<height;j++)
@@ -109,10 +123,19 @@ public class AdvancedIcon implements Icon
 	}
 	public void writeToFile(File file) 
 	{
+		Protokol.write("AdvancedIcon:writeToFile:" + file.getAbsolutePath());
 		IconTypFinder itf = Factory.getIconTypFinder();
 		String typ = itf.getTyp(file);
 		ImageLoader il = Factory.getImageLoader();
-		BufferedImage im = getImage();
+		BufferedImage im = null;
+		if (typ.equals("png") || typ.equals("PNG"))
+		{
+			im = getARGBImage();
+		}
+		else
+		{
+			im = getImage();
+		}
 		il.write(file,typ,im);
 	}
 	public Dimension getSize() 

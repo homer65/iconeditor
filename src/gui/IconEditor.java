@@ -449,6 +449,10 @@ public class IconEditor extends Menu implements PixelListener,ColorListener
 			{
 				icon.writeToFile(file);
 			}
+			else
+			{
+				Protokol.write("IconEditor::Kein File ausgewaehlt");
+			}
 		}
 		if (quelle == m12) // load
 		{
